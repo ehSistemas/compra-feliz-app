@@ -1,0 +1,30 @@
+<div *ngIf="aberto" class="overlay" (click)="fecharModal()"></div>
+<div *ngIf="aberto">
+  <div class="modal-base col-md-4">
+
+    <div class="modal-titulo wrapper">
+      {{ titulo }}
+      <div style="float: right">
+        <i (click)="fecharModal()" class="material-icons icone-close">&#xE5CD;</i>
+      </div>
+    </div>
+    <div class="modal-corpo">
+      <div>
+        <br />
+        <div style="text-align: center" *ngIf="mensagem != '' && mensagem != null">
+          <br /> {{ mensagem }}
+          <br />
+        </div>
+        <div>
+          <ng-content></ng-content>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-12 alinha-btn" *ngIf="!ocultaBotao">
+            <button type="button" (click)="fecharModal()" mdl-button mdl-button-type="raised" mdl-colored="primary" mdl-ripple>OK</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

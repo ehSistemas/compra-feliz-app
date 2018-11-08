@@ -1,0 +1,73 @@
+.logo-compra-feliz {
+  width: 150px;
+  cursor:pointer;
+}
+
+.header {
+  background-color: #f38a33;
+  height: 120px;
+  width: 100%;
+ margin-bottom:20px;
+}
+
+.container-pesquisa {
+  margin-top: 20px;
+}
+
+.input-pesquisa {
+  margin-top: 20px;
+}
+
+.container-quantidade {
+  text-align: left;
+  padding-top:25px;
+}
+
+.quantidade {
+  color: #fff;
+  font-size: 14px;
+}
+
+.container-titulo {
+  text-align:center;
+}
+
+.titulo {
+  font-size:22px;
+  color:#fff;
+}
+
+.container-icone-login {
+  text-align: left;
+  padding-top: 25px;
+}
+
+.icone-login {
+  color: #fff;
+  vertical-align: middle;
+}
+
+.text-icon {
+  color: #fff;
+  line-height: 25px;
+  vertical-align: middle;
+}
+
+
+@media (max-width: 600px) {
+  .logo-compra-feliz {
+    display: none;
+  }
+
+  .container-icone-login {
+    display:none;
+  }
+
+  .container-quantidade {
+    display: none;
+  }
+}
+
+.ajustar-tamanho {
+  width: 100%;
+}

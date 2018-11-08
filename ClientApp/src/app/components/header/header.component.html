@@ -1,0 +1,33 @@
+<div class="header">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 container-titulo">
+        <span class="titulo">Consulta de Produtos</span>
+      </div>
+      <div class="col-md-2">
+        <img src="assets/logo.png" class="logo-compra-feliz" (click)="voltarPaginaInicial()" />
+      </div>
+      <div class="col-md-5 container-pesquisa">
+
+        <input type="text" placeholder="Buscar produtos..." (keyup)="alterarValorPesquisa()"  class="form-control" matInput [formControl]="produtoAtual" [matAutocomplete]="auto"/>
+
+        <mat-autocomplete #auto="matAutocomplete" >
+          <mat-option *ngFor="let produto of listaProdutos" [value]="produto.nome" (onSelectionChange)="selecionaProduto(produto)">
+            {{ produto.nome }}
+          </mat-option>
+        </mat-autocomplete>
+
+
+
+
+      </div>
+      <div class="col-md-3 container-quantidade">
+        <!--<span class="quantidade">Total de 11 Produtos Encontrados</span>-->
+      </div>
+      <div class="col-md-2 container-icone-login">
+        <i class="material-icons icone-login">&#xE853;</i> <span class="text-icon">Emerson H</span>
+      </div>
+    </div>
+  </div>
+</div>
+

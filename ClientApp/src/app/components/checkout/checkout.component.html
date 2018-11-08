@@ -1,0 +1,116 @@
+<component-modal #modalConfirmar>
+  <div class="row">
+    <div class="col-md-12">
+      <span>Ao clicar em confirmar você estará comprando os seguintes itens abaixo!</span>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <ul>
+        <li *ngFor="let item of listaCarrinho">
+          {{item.produto.nome}} | quantidade ({{item.quantidade}}) |  Valor: R$ {{item.valorTotal}}
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group alinha-botao">
+        <button type="button" class="centraliza-numero" mat-raised-button color="primary" (click)="fecharModal()">Confirmar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 mensagem-final">
+    </div>
+  </div>
+
+
+</component-modal>
+
+<div class="container">
+  <mat-accordion>
+    <mat-expansion-panel [expanded]="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Lista de Produtos
+        </mat-panel-title>
+
+      </mat-expansion-panel-header>
+
+      <mat-list>
+        <mat-list-item class="linha-titulo-produto">
+          <div class="row ajuste-row">
+            <div class="col-md-1">
+
+            </div>
+            <div class="col-md-5">
+              <span>Descrição</span>
+            </div>
+
+            <div class="col-md-2">
+              <span>Quantidade</span>
+            </div>
+            <div class="col-md-2">
+              <span>Valor Unitário</span>
+            </div>
+            <div class="col-md-2">
+              <span>Valor Total</span>
+            </div>
+          </div>
+        </mat-list-item>
+        <mat-list-item *ngFor="let item of listaCarrinho; let i = index" class="linha-produto">
+          <div class="row ajuste-row">
+            <div class="col-md-1 remover">
+              <i class="material-icons botao-remover" (click)="removerItemCarrinho(i, item)">&#xE872;</i>
+            </div>
+            <div class="col-md-2">
+              <img class="foto" src="{{item.produto.foto}}">
+            </div>
+            <div class="col-md-3 descricao">
+              <span>{{item.produto.nome}}</span>
+            </div>
+
+            <div class="col-md-2 quantidade">
+              <input type="number" value="{{item.quantidade}}" (change)="adicionarMaisItens($event, item)" min="1" class="form-control" />
+            </div>
+            <div class="col-md-2 valor-unitario">
+              <span>R$ {{item.produto.valor}}</span>
+            </div>
+            <div class="col-md-2 valor-total">
+              <span>R$ {{item.valorTotal}}</span>
+            </div>
+
+          </div>
+        </mat-list-item>
+
+      </mat-list>
+    </mat-expansion-panel>
+
+  </mat-accordion>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="valor-total-compra">
+        <div class="total-linha1">
+          <span>Total: R$ {{valorTotalCompra}}</span>
+        </div>
+
+      </div>
+
+    </div>
+    <div class="col-md-12">
+      <div class="botao-finalizar-compra">
+        <button mat-raised-button color="primary" (click)="abrirModalFinalizar()"> Finalizar Compra</button>
+      </div>
+
+    </div>
+  </div>
+  <div class="load" *ngIf="load">
+    <mat-spinner></mat-spinner>
+  </div>
+
+</div>

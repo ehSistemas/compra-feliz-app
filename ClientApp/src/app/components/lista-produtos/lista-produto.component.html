@@ -1,0 +1,44 @@
+<component-modal #modalComprar>
+  <form [formGroup]="comprarProdutoForm" (ngSubmit)="submitFormModalComprar(comprarProdutoForm.value)">
+    <div class="row">
+      <div class="col-md-6">
+        <span>Insira a quantidade desejada!</span>
+      </div>
+      <div class="col-md-3">
+        <input class="form-control" type="number" [formControl]="comprarProdutoForm.get('quantidade')" min="1" />
+      </div>
+      <div class="col-md-3">
+        <div class="form-group alinha-botao">
+          <button type="submit" class="centraliza-numero" mat-raised-button color="primary">Confirmar</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</component-modal>
+<div class="container">
+  <div class="container-lista" *ngFor="let item of listaProduto">
+    <div class="row container-nome-produto">
+      <div class="col-md-12">
+        <span class="nome-produto" (click)="selecionaProduto(item)">{{item.nome}}</span>
+      </div>
+    </div>
+    <div class="row container-produto">
+      <div class="col-md-4">
+        <img class="foto" (click)="selecionaProduto(item)" src="{{item.foto}}">
+      </div>
+      <div class="col-md-6">
+        <span class="descricao-produto">
+        </span>
+      </div>
+      <div class="col-md-2">
+        <div class="preco-produto">
+          R$ {{item.valor}}
+        </div>
+        <div class="botao-comprar">
+          <button mat-raised-button color="primary" (click)="abrirModal(item)"><i class="material-icons">&#xE8CC;</i> Comprar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

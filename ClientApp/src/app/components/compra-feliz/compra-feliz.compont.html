@@ -1,0 +1,11 @@
+<header (selecionadaProdutoFiltroEvent)="selecionadaProdutoFiltro($event)"></header>
+
+<div class="container">
+  <div class="col-md-12">
+    <detalhes-produto *ngIf="tela == 'detalhes'" [produtoSelecionado]="produtoSelecionado" (comprarProdutoEvent)="comprarProduto($event)" ></detalhes-produto>
+    <lista-produto *ngIf="tela == 'lista'" (comprarProdutoEvent)="comprarProduto($event)" (exibeDetalhesEvent)="exibeDetalhesProduto($event)" [produtoSelecionado]="produtoSelecionado"></lista-produto>
+    <checkout *ngIf="tela == 'checkout'" [novoItemCarrinho]="listaCarrinho" (itemRemovidoCarrinhoEmit)="itemRemovidoCarrinho($event)" (voltarTelaOrigemEmit)="voltarTelaOriginal()"></checkout>
+  </div>
+</div>
+
+

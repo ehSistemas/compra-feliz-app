@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-1 bordas lista-fotos">
+      <div class="row">
+        <div *ngFor="let foto of descricaoProduto.fotos; let i = index" class="container-foto-tumb" [ngClass]="{'container-foto-tumb-selecionado': i == slideIndex}">
+          <img class="foto" src="{{foto}}" (click)="selecionarImagem(i)">
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-md-7 bordas">
+      <span class="next" (click)="alterarDiv(1)"><i class="material-icons">&#xE5CC;</i></span>
+      <span class="back" (click)="alterarDiv(-1)"><i class="material-icons">&#xE5CB;</i></span>
+
+
+      <div *ngFor="let foto of descricaoProduto.fotos;  let i = index">
+        <img class="foto" src="{{foto}}" [hidden]="i != slideIndex">
+      </div>
+
+    </div>
+
+    <div class="col-md-4 bordas">
+      <div class="col-md-12 titulo">
+        {{_produtoSelecionado.nome}}
+      </div>
+
+      <div class="col-md-12 preco">
+        R$ {{_produtoSelecionado.valor}}
+      </div>
+      <form [formGroup]="comprarProdutoForm" (ngSubmit)="submitFormModalComprar(comprarProdutoForm.value)">
+        <div class="row quantidade">
+
+          <div class="col-md-6">
+            <label>Quantidade</label>
+            <input class="form-control tamanho-campo-quantidade" min="1" [formControl]="comprarProdutoForm.get('quantidade')" placeholder="Quantidade" type="number" value="1">
+          </div>
+          <div class="col-md-6 alinha-btn">
+            <button type="submit" mat-raised-button color="primary"> Comprar agora</button>
+          </div>
+
+        </div>
+      </form>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 bordas">
+      <div class="titulo-descricao">
+        <span>Descrição</span>
+      </div>
+
+      <div class="descricao">
+        {{descricaoProduto.descricao}}
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
